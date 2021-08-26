@@ -24,6 +24,7 @@ mkdir _build && cd _build
 cmake -DBUILD_SHARED=1 ..
 cmake --build .
 
-make install  # install, linux only
+# install
+cmake --install .
 
 ```
