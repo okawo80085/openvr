@@ -1,7 +1,8 @@
 //========= Copyright Valve Corporation ============//
-#include <vrcore/strtools_public.h>
+#include <vrcommon/strtools_public.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include <sstream>
 #include <codecvt>
@@ -9,7 +10,7 @@
 #include <functional>
 #include <locale>
 #include <codecvt>
-#include <vrcore/assert.h>
+#include <vrcommon/assert.h>
 
 #if defined( _WIN32 )
 #include <windows.h>

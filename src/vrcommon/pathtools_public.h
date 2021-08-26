@@ -124,30 +124,34 @@ std::string Path_SanitizeFilename( const std::string& sFilename );
 
 //-----------------------------------------------------------------------------
 #if defined(WIN32)
-#define DYNAMIC_LIB_EXT	".dll"
-#define PROGRAM_EXT ".exe"
-#ifdef _WIN64
-#define PLATSUBDIR	"win64"
-#else
-#define PLATSUBDIR	"win32"
-#endif
+	#define DYNAMIC_LIB_EXT	".dll"
+	#define PROGRAM_EXT ".exe"
+
+	#ifdef _WIN64
+		#define PLATSUBDIR	"win64"
+	#else
+		#define PLATSUBDIR	"win32"
+	#endif
+
 #elif defined(OSX)
-#define DYNAMIC_LIB_EXT	".dylib"
-#define PLATSUBDIR	"osx32"
-#define PROGRAM_EXT ""
+	#define DYNAMIC_LIB_EXT	".dylib"
+	#define PLATSUBDIR	"osx32"
+	#define PROGRAM_EXT ""
+
 #elif defined(LINUX)
-#define DYNAMIC_LIB_EXT	".so"
-#define PROGRAM_EXT ""
-#if defined( LINUX32 )
-#define PLATSUBDIR	"linux32"
-#elif defined( ANDROIDARM64 )
-#define PLATSUBDIR	"androidarm64" 
-#elif defined( LINUXARM64 )
-#define PLATSUBDIR	"linuxarm64" 
+	#define DYNAMIC_LIB_EXT	".so"
+	#define PROGRAM_EXT ""
+	#if defined( LINUX32 )
+		#define PLATSUBDIR	"linux32"
+	#elif defined( ANDROIDARM64 )
+		#define PLATSUBDIR	"androidarm64" 
+	#elif defined( LINUXARM64 )
+		#define PLATSUBDIR	"linuxarm64" 
+	#else
+		#define PLATSUBDIR	"linux64"
+	#endif
+
 #else
-#define PLATSUBDIR	"linux64"
-#endif
-#else
-#warning "Unknown platform for PLATSUBDIR"
-#define PLATSUBDIR	"unknown_platform"
+	#warning "Unknown platform for PLATSUBDIR"
+	#define PLATSUBDIR	"unknown_platform"
 #endif
