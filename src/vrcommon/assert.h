@@ -2,28 +2,34 @@
 
 #pragma once
 
-#ifndef __OPENVR_ASSERT
-#define __OPENVR_ASSERT
+#ifndef OPENVR_ASSERT_LIB_H
+#define OPENVR_ASSERT_LIB_H
 
 #include <iostream>
 // uncomment to disable throw on assert
 // #define NDEBUG
 
 // not the best assert but it works
-void OPENVR_ASSERT(bool x, const char* msg) {
+inline void __OPENVR_ASSERT(bool x, const char* msg) {
     if (!x) {
        std::cout << "Assert failed, ";
        std::cout << "line" << __LINE__ << ", ";
        std::cout << "file '" << __FILE__ << "': ";
        std::cout << msg << "\n";
 
-   #ifndef NDEBUG
+#ifndef NDEBUG
        throw;
-   #endif
+#endif
     }
 }
 
-// macro wrapper to fix define errors
-#define AssertMsg(exp, msg) (OPENVR_ASSERT((exp), (msg)))
+// fix for <cassert> includes,
+// because cassert and assert.h includes will include this header
+// the proper way to fix this issue is to rename this file
+// to literally anything except assert.h, but for now this will do
+#define assert(exp) (__OPENVR_ASSERT((exp), ""))
 
-#endif // #ifndef __OPENVR_ASSERT
+// macro wrapper to fix define errors
+#define AssertMsg(exp, msg) (__OPENVR_ASSERT((exp), (msg)))
+
+#endif // #ifndef OPENVR_ASSERT_LIB_H
