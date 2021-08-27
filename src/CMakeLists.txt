@@ -101,8 +101,8 @@ endif()
 target_link_libraries(${LIBNAME} ${EXTRA_LIBS} ${CMAKE_DL_LIBS})
 target_include_directories(${LIBNAME} PUBLIC ${OPENVR_HEADER_DIR})
 
-install(TARGETS ${LIBNAME} DESTINATION lib)
-install(FILES ${PUBLIC_HEADER_FILES} DESTINATION include/openvr)
+install(TARGETS ${LIBNAME} DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
+install(FILES ${PUBLIC_HEADER_FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/openvr")
 
 # Generate a .pc file for linux environments
 if(PLATFORM_NAME MATCHES "linux")
