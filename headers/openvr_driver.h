@@ -2783,16 +2783,16 @@ namespace vr
 		};
 
 		/** Called to allocate textures for applications to render into.  One of these per eye will be passed back to SubmitLayer each frame. */
-		virtual void CreateSwapTextureSet( uint32_t unPid, const SwapTextureSetDesc_t *pSwapTextureSetDesc, SwapTextureSet_t *pOutSwapTextureSet ) {}
+		virtual void CreateSwapTextureSet( uint32_t unPid, const SwapTextureSetDesc_t* pSwapTextureSetDesc, SwapTextureSet_t* pOutSwapTextureSet ) = 0;
 
 		/** Used to textures created using CreateSwapTextureSet.  Only one of the set's handles needs to be used to destroy the entire set. */
-		virtual void DestroySwapTextureSet( vr::SharedTextureHandle_t sharedTextureHandle ) {}
+		virtual void DestroySwapTextureSet( vr::SharedTextureHandle_t sharedTextureHandle ) = 0;
 
 		/** Used to purge all texture sets for a given process. */
-		virtual void DestroyAllSwapTextureSets( uint32_t unPid ) {}
+		virtual void DestroyAllSwapTextureSets( uint32_t unPid ) = 0;
 
 		/** After Present returns, calls this to get the next index to use for rendering. */
-		virtual void GetNextSwapTextureSetIndex( vr::SharedTextureHandle_t sharedTextureHandles[ 2 ], uint32_t( *pIndices )[ 2 ] ) {}
+		virtual void GetNextSwapTextureSetIndex( vr::SharedTextureHandle_t sharedTextureHandles[ 2 ], uint32_t( *pIndices )[ 2 ] ) = 0;
 
 		/** Call once per layer to draw for this frame.  One shared texture handle per eye.  Textures must be created
 		* using CreateSwapTextureSet and should be alternated per frame.  Call Present once all layers have been submitted. */
@@ -2810,16 +2810,16 @@ namespace vr
 			// Hmd pose used to render this layer.
 			vr::HmdMatrix34_t mHmdPose;
 		};
-		virtual void SubmitLayer( const SubmitLayerPerEye_t( &perEye )[ 2 ] ) {}
+		virtual void SubmitLayer( const SubmitLayerPerEye_t( &perEye )[ 2 ] ) = 0;
 
 		/** Submits queued layers for display. */
-		virtual void Present( vr::SharedTextureHandle_t syncTexture ) {}
+		virtual void Present( vr::SharedTextureHandle_t syncTexture ) = 0;
 
 		/** Called after Present to allow driver to take more time until vsync after they've successfully acquired the sync texture in Present.*/
-		virtual void PostPresent() {}
+		virtual void PostPresent() = 0;
 
 		/** Called to get additional frame timing stats from driver.  Check m_nSize for versioning (new members will be added to end only). */
-		virtual void GetFrameTiming( DriverDirectMode_FrameTiming *pFrameTiming ) {}
+		virtual void GetFrameTiming( DriverDirectMode_FrameTiming *pFrameTiming ) = 0;
 	};
 
 	static const char *IVRDriverDirectModeComponent_Version = "IVRDriverDirectModeComponent_007";
