@@ -10,7 +10,7 @@
 #include <functional>
 #include <locale>
 #include <codecvt>
-#include <vrcommon/assert.h>
+#include <vrcommon/vr_assert.h>
 
 #if defined( _WIN32 )
 #include <windows.h>
