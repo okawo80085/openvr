@@ -17,7 +17,7 @@ namespace vr
 {
 	static const uint32_t k_nSteamVRVersionMajor = 1;
 	static const uint32_t k_nSteamVRVersionMinor = 16;
-	static const uint32_t k_nSteamVRVersionBuild = 8;
+	static const uint32_t k_nSteamVRVersionBuild = 9;
 } // namespace vr
 
 // public_vrtypes.h
