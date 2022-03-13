@@ -243,6 +243,7 @@ endif()
 
 add_subdirectory(driver_sample)
 add_subdirectory(hellovr_opengl)
+add_subdirectory(hobovr_test)
 if(NOT (${CMAKE_SYSTEM_NAME} MATCHES "Darwin"))
   add_subdirectory(hellovr_vulkan)
 endif()
